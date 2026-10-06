@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Healty Eazy — Health checkups for foreigners in China</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F6F7F3;
+    --ink: #13241E;
+    --ink-soft: #45564F;
+    --jade: #1F6F5C;
+    --jade-deep: #123D33;
+    --seal: #C1432D;
+    --mist: #E1E8E3;
+    --white: #FFFFFF;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0E1815;
+      --ink: #E8F0EC;
+      --ink-soft: #A5B8B0;
+      --jade: #3FA88D;
+      --jade-deep: #123D33;
+      --mist: #24342E;
+      --white: #16241F;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1815;
+    --ink: #E8F0EC;
+    --ink-soft: #A5B8B0;
+    --jade: #3FA88D;
+    --jade-deep: #123D33;
+    --mist: #24342E;
+    --white: #16241F;
+  }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 72px); }
+  body {
+    background-color: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+  }
+  .he-display { font-family: 'Space Grotesk', 'Inter', system-ui, sans-serif; }
+  .he-focus:focus-visible { outline: 2px solid var(--jade); outline-offset: 3px; }
+  .on-jade { color: #FFFFFF; }
+  header.he-nav { position: sticky; top: env(safe-area-inset-top, 0px); }
+  .faq-chevron { transition: transform 150ms ease; }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<div class="he-root min-h-screen">
+
+  <!-- NAV -->
+  <header class="he-nav z-40 border-b" style="border-color: var(--mist); background-color: var(--bg);">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a href="#top" class="he-display he-focus text-xl font-semibold tracking-tight" style="color: var(--ink);">Healty Eazy</a>
+      <nav id="nav-desktop" class="hidden items-center gap-8 md:flex"></nav>
+      <div class="hidden md:block">
+        <a href="#book" class="he-focus inline-flex items-center gap-1.5 rounded-md px-4 py-2 text-sm font-semibold text-white" style="background-color: var(--jade-deep);">Book a checkup</a>
+      </div>
+      <button id="menu-btn" class="he-focus md:hidden" aria-label="Open menu" aria-expanded="false">
+        <i data-lucide="menu" id="menu-icon" width="24" height="24"></i>
+      </button>
+    </div>
+    <div id="nav-mobile" class="hidden border-t px-6 py-4 md:hidden" style="border-color: var(--mist);">
+      <div id="nav-mobile-links" class="flex flex-col gap-4"></div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="top" class="mx-auto max-w-6xl px-6 pb-20 pt-14 sm:pt-20">
+    <div class="grid items-center gap-12 md:grid-cols-2 md:gap-8">
+      <div>
+        <p class="text-sm font-medium" style="color: var(--jade);">For foreigners living and working in China</p>
+        <h1 class="he-display mt-4 text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl">Your health checkup, without the language barrier.</h1>
+        <p class="mt-5 max-w-md text-base leading-relaxed" style="color: var(--ink-soft);">
+          We book your visa or work permit physical at an authorized hospital, send an interpreter to walk you
+          through it, and hand you back a report you can actually read.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="#book" class="he-focus inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white" style="background-color: var(--seal);">
+            Book a checkup <i data-lucide="arrow-up-right" width="16" height="16"></i>
+          </a>
+          <a href="#process" class="he-focus text-sm font-medium underline underline-offset-4" style="color: var(--ink);">See how it works</a>
+        </div>
+        <div id="hero-stats" class="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t pt-6" style="border-color: var(--mist);"></div>
+      </div>
+
+      <!-- Report mock -->
+      <div class="relative mx-auto w-full max-w-sm">
+        <div class="rounded-sm border p-6 shadow-sm" style="border-color: var(--mist); background-color: var(--white);">
+          <div class="flex items-start justify-between border-b pb-4" style="border-color: var(--mist);">
+            <div>
+              <p class="text-[11px] font-medium uppercase" style="color: var(--ink-soft); letter-spacing: 0.06em;">Physical examination report</p>
+              <p class="he-display mt-1 text-lg font-semibold">体检报告 · Translated</p>
+            </div>
+            <i data-lucide="shield-check" width="22" height="22" style="color: var(--jade);"></i>
+          </div>
+          <div id="report-rows" class="mt-4 space-y-3"></div>
+          <div class="mt-5 flex items-center justify-between border-t pt-4" style="border-color: var(--mist);">
+            <span class="text-[11px]" style="color: var(--ink-soft);">Accepted by Exit-Entry Bureau</span>
+            <div class="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 text-center" style="border-color: var(--seal); color: var(--seal); transform: rotate(-8deg);">
+              <span class="he-display text-[9px] font-semibold leading-tight">验讫<br>Verified</span>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -bottom-4 -left-4 hidden rounded-sm border px-3 py-2 text-xs font-medium shadow-sm sm:block" style="border-color: var(--mist); background-color: var(--white); color: var(--ink);">
+          Ready in 3–5 days
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="border-t py-20" style="border-color: var(--mist);">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="max-w-xl">
+        <h2 class="he-display text-3xl font-semibold tracking-tight">Four kinds of checkup, one process</h2>
+        <p class="mt-3 text-base" style="color: var(--ink-soft);">
+          The exam requirements differ depending on why you need one. We match you to the right panel before you book.
+        </p>
+      </div>
+      <div id="services-grid" class="mt-12 grid gap-px overflow-hidden rounded-sm sm:grid-cols-2" style="background-color: var(--mist);"></div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process" class="border-t py-20" style="border-color: var(--mist); background-color: var(--jade-deep);">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="max-w-xl">
+        <h2 class="he-display text-3xl font-semibold tracking-tight text-white">From booking to stamped report</h2>
+        <p class="mt-3 text-base" style="color: #CFE0D9;">Four steps, start to finish. You show up once — we handle the rest.</p>
+      </div>
+      <div id="process-grid" class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4"></div>
+    </div>
+  </section>
+
+  <!-- HOSPITALS -->
+  <section id="hospitals" class="border-t py-20" style="border-color: var(--mist);">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div class="max-w-xl">
+          <h2 class="he-display text-3xl font-semibold tracking-tight">Authorized hospitals, six cities</h2>
+          <p class="mt-3 text-base" style="color: var(--ink-soft);">
+            We only route you to hospitals currently on your city's approved list for visa and permit physicals.
+          </p>
+        </div>
+        <a href="#book" class="he-focus flex items-center gap-1 text-sm font-medium" style="color: var(--jade);">
+          Check my city <i data-lucide="arrow-up-right" width="14" height="14"></i>
+        </a>
+      </div>
+      <div id="hospitals-grid" class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="border-t py-20" style="border-color: var(--mist);">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="max-w-xl">
+        <h2 class="he-display text-3xl font-semibold tracking-tight">Straightforward pricing</h2>
+        <p class="mt-3 text-base" style="color: var(--ink-soft);">
+          The hospital fee is separate and paid on-site — this covers booking, interpretation, and translation.
+        </p>
+      </div>
+      <div id="pricing-grid" class="mt-12 grid gap-6 lg:grid-cols-3"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="border-t py-20" style="border-color: var(--mist);">
+    <div class="mx-auto max-w-3xl px-6">
+      <h2 class="he-display text-3xl font-semibold tracking-tight">Common questions</h2>
+      <div id="faq-list" class="mt-10"></div>
+    </div>
+  </section>
+
+  <!-- BOOK CTA -->
+  <section id="book" class="border-t py-20" style="border-color: var(--mist);">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="flex flex-col items-start gap-6 border p-10 sm:flex-row sm:items-center sm:justify-between" style="border-color: var(--mist); background-color: var(--white);">
+        <div>
+          <h2 class="he-display text-2xl font-semibold tracking-tight sm:text-3xl">Tell us your city and deadline</h2>
+          <p class="mt-2 max-w-md text-sm" style="color: var(--ink-soft);">
+            We'll reply within a few hours with the nearest available slot and what to bring.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <a href="mailto:hello@healtyeazy.com" class="he-focus flex items-center justify-center gap-2 rounded-md border px-5 py-3 text-sm font-semibold" style="border-color: var(--mist); color: var(--ink);">
+            <i data-lucide="mail" width="16" height="16"></i> Email us
+          </a>
+          <a href="tel:+861012345678" class="he-focus flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-white" style="background-color: var(--jade-deep);">
+            <i data-lucide="phone" width="16" height="16"></i> Call the booking line
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t py-10" style="border-color: var(--mist);">
+    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 sm:flex-row sm:items-center">
+      <p class="he-display text-base font-semibold" style="color: var(--ink);">Healty Eazy</p>
+      <p class="text-xs" style="color: var(--ink-soft);">
+        © <span id="year"></span> Healty Eazy. Not affiliated with any government exit-entry bureau.
+      </p>
+    </div>
+  </footer>
+</div>
+
+<script>
+  const NAV_LINKS = [
+    { label: "Services", href: "#services" },
+    { label: "How it works", href: "#process" },
+    { label: "Hospitals", href: "#hospitals" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "FAQ", href: "#faq" },
+  ];
+
+  const SERVICES = [
+    { icon: "stethoscope", title: "Z-visa & work permit physical",
+      desc: "The standard exam required for a foreigner's work permit and residence permit — blood work, chest X-ray, ECG, ultrasound, and the rest of the panel, at a hospital authorized to issue the official form." },
+    { icon: "file-check-2", title: "Residence permit renewal",
+      desc: "Annual or renewal-cycle checkups timed so your report is ready before your permit expires, with no gap in your paperwork." },
+    { icon: "clipboard-list", title: "Student visa health form",
+      desc: "The exam most Chinese universities require before enrollment, completed and translated in time for your admission deadline." },
+    { icon: "plane-takeoff", title: "Pre-departure & family checks",
+      desc: "Checkups for dependents and family members joining you in China, booked together so everyone's appointments line up." },
+  ];
+
+  const PROCESS = [
+    { title: "Tell us what the check is for",
+      desc: "Work permit, residence permit, university, or something else — the required items differ, so we start by confirming exactly what your situation needs." },
+    { title: "We book the hospital slot",
+      desc: "You get a confirmed date and time at a hospital that's authorized to issue the report your visa office or employer will accept." },
+    { title: "An interpreter meets you there",
+      desc: "Someone who speaks your language walks you through each station — no guessing which room is next or what a nurse just asked you." },
+    { title: "Your report comes back in English",
+      desc: "We collect the results, get the official translation and stamp attached, and send you a copy you can actually read before you file it." },
+  ];
+
+  const HOSPITALS = [
+    { city: "Shanghai", note: "3 partner hospitals, same-week slots" },
+    { city: "Beijing", note: "2 partner hospitals, English-speaking staff" },
+    { city: "Shenzhen", note: "International clinic wing, no queue booking" },
+    { city: "Guangzhou", note: "Weekend appointments available" },
+    { city: "Hangzhou", note: "1-day turnaround on standard panel" },
+    { city: "Chengdu", note: "Family bookings handled together" },
+  ];
+
+  const PRICING = [
+    { name: "Standard exam", price: "¥680", detail: "Booking + interpreter + translated report",
+      features: ["Full work-permit panel", "English-speaking interpreter on-site", "Certified translated report", "Results in 3–5 working days"] },
+    { name: "Priority exam", price: "¥980", detail: "For tight visa or permit deadlines", featured: true,
+      features: ["Everything in Standard", "Next-available-day booking", "Results in 24–48 hours", "Direct hospital liaison for re-checks"] },
+    { name: "Family package", price: "From ¥1,850", detail: "Two or more people, one visit",
+      features: ["Shared appointment window", "One interpreter for the group", "Reports delivered together", "10% off each additional person"] },
+  ];
+
+  const FAQS = [
+    { q: 'Which hospitals count as "authorized" for this?',
+      a: "Local exit-entry and labor bureaus only accept reports from hospitals on their approved list, which varies by city. We only book you into hospitals that are currently on that list for your city, so the report is accepted the first time." },
+    { q: "Do I need to fast before the exam?",
+      a: "Yes — the blood draw requires 8 hours without food, though water is fine. We send a one-page prep sheet in English the day before your appointment so there are no surprises on-site." },
+    { q: "What if my results flag something?",
+      a: "Some common findings, like mildly elevated blood pressure on the day, just need a same-week re-check rather than a failed exam. Your interpreter and case contact will explain exactly what's needed and help book the re-check." },
+    { q: "How long does the whole process take?",
+      a: "Most people complete the hospital visit in under two hours and receive the translated report within 3–5 working days. Priority bookings can shorten that to 24–48 hours." },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+
+  // Nav
+  $("nav-desktop").innerHTML = NAV_LINKS.map(l =>
+    `<a href="${l.href}" class="he-focus text-sm font-medium" style="color: var(--ink-soft);">${l.label}</a>`).join("");
+  $("nav-mobile-links").innerHTML = NAV_LINKS.map(l =>
+    `<a href="${l.href}" class="mobile-link text-sm font-medium" style="color: var(--ink-soft);">${l.label}</a>`).join("") +
+    `<a href="#book" class="mobile-link inline-flex w-fit items-center gap-1.5 rounded-md px-4 py-2 text-sm font-semibold text-white" style="background-color: var(--jade-deep);">Book a checkup</a>`;
+
+  let menuOpen = false;
+  function setMenu(open) {
+    menuOpen = open;
+    $("nav-mobile").classList.toggle("hidden", !open);
+    $("menu-btn").setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    $("menu-btn").setAttribute("aria-expanded", String(open));
+    $("menu-btn").innerHTML = `<i data-lucide="${open ? "x" : "menu"}" width="24" height="24"></i>`;
+    lucide.createIcons();
+  }
+  $("menu-btn").addEventListener("click", () => setMenu(!menuOpen));
+  document.querySelectorAll(".mobile-link").forEach(a => a.addEventListener("click", () => setMenu(false)));
+
+  // Hero stats
+  $("hero-stats").innerHTML = [
+    ["6", "cities covered"], ["24hr", "priority turnaround"], ["11", "languages of interpreters"],
+  ].map(([num, label]) => `
+    <div>
+      <p class="he-display text-2xl font-semibold">${num}</p>
+      <p class="text-xs" style="color: var(--ink-soft);">${label}</p>
+    </div>`).join("");
+
+  // Report mock rows
+  $("report-rows").innerHTML = [
+    ["Blood pressure", "118 / 76 — normal"],
+    ["Chest X-ray", "No abnormalities found"],
+    ["ECG", "Sinus rhythm — normal"],
+    ["Blood panel", "Within reference range"],
+  ].map(([label, value]) => `
+    <div class="flex items-center justify-between text-sm">
+      <span style="color: var(--ink-soft);">${label}</span>
+      <span class="font-medium">${value}</span>
+    </div>`).join("");
+
+  // Services
+  $("services-grid").innerHTML = SERVICES.map(s => `
+    <div class="p-8" style="background-color: var(--white);">
+      <i data-lucide="${s.icon}" width="22" height="22" style="color: var(--jade);"></i>
+      <h3 class="he-display mt-4 text-lg font-semibold">${s.title}</h3>
+      <p class="mt-2 text-sm leading-relaxed" style="color: var(--ink-soft);">${s.desc}</p>
+    </div>`).join("");
+
+  // Process
+  $("process-grid").innerHTML = PROCESS.map((s, i) => `
+    <div>
+      <p class="he-display text-4xl font-semibold" style="color: #E4735C;">${String(i + 1).padStart(2, "0")}</p>
+      <h3 class="mt-3 text-base font-semibold text-white">${s.title}</h3>
+      <p class="mt-2 text-sm leading-relaxed" style="color: #B9CFC5;">${s.desc}</p>
+    </div>`).join("");
+
+  // Hospitals
+  $("hospitals-grid").innerHTML = HOSPITALS.map(h => `
+    <div class="flex items-start gap-3 border p-5" style="border-color: var(--mist);">
+      <i data-lucide="building-2" width="18" height="18" class="mt-0.5 shrink-0" style="color: var(--jade);"></i>
+      <div>
+        <p class="font-semibold">${h.city}</p>
+        <p class="mt-1 flex items-center gap-1 text-xs" style="color: var(--ink-soft);">
+          <i data-lucide="map-pin" width="12" height="12"></i> ${h.note}
+        </p>
+      </div>
+    </div>`).join("");
+
+  // Pricing
+  $("pricing-grid").innerHTML = PRICING.map(p => {
+    const f = !!p.featured;
+    return `
+    <div class="flex flex-col border p-8" style="border-color: ${f ? "var(--jade)" : "var(--mist)"}; background-color: ${f ? "var(--jade-deep)" : "var(--white)"}; color: ${f ? "#FFFFFF" : "var(--ink)"};">
+      <p class="he-display text-lg font-semibold">${p.name}</p>
+      <p class="mt-1 text-sm" style="color: ${f ? "#B9CFC5" : "var(--ink-soft)"};">${p.detail}</p>
+      <p class="he-display mt-6 text-3xl font-semibold">${p.price}</p>
+      <ul class="mt-6 flex-1 space-y-3">
+        ${p.features.map(ft => `
+          <li class="flex items-start gap-2 text-sm">
+            <i data-lucide="check-circle-2" width="16" height="16" class="mt-0.5 shrink-0" style="color: ${f ? "#7FC7B0" : "var(--jade)"};"></i>
+            ${ft}
+          </li>`).join("")}
+      </ul>
+      <a href="#book" class="he-focus mt-8 inline-flex items-center justify-center rounded-md px-4 py-2.5 text-sm font-semibold" style="background-color: ${f ? "var(--seal)" : "var(--jade-deep)"}; color: #FFFFFF;">Choose ${p.name}</a>
+    </div>`;
+  }).join("");
+
+  // FAQ
+  let openIndex = 0;
+  function renderFaq() {
+    $("faq-list").innerHTML = FAQS.map((item, i) => {
+      const isOpen = openIndex === i;
+      return `
+      <div class="border-t py-5" style="border-color: var(--mist);">
+        <button class="he-focus flex w-full items-center justify-between gap-4 text-left" data-i="${i}" aria-expanded="${isOpen}">
+          <span class="font-medium">${item.q}</span>
+          <i data-lucide="chevron-down" width="18" height="18" class="faq-chevron shrink-0" style="color: var(--jade); transform: rotate(${isOpen ? 180 : 0}deg);"></i>
+        </button>
+        ${isOpen ? `<p class="mt-3 max-w-xl text-sm leading-relaxed" style="color: var(--ink-soft);">${item.a}</p>` : ""}
+      </div>`;
+    }).join("");
+    $("faq-list").querySelectorAll("button").forEach(b =>
+      b.addEventListener("click", () => {
+        const i = Number(b.dataset.i);
+        openIndex = openIndex === i ? -1 : i;
+        renderFaq();
+      }));
+    lucide.createIcons();
+  }
+  renderFaq();
+
+  $("year").textContent = new Date().getFullYear();
+  lucide.createIcons();
+</script>
+</body>
+</html>
